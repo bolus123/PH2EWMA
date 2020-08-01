@@ -16,7 +16,7 @@ getARL <- function(L, lambda, m, nu, n, ubc, tmin, tmax, state = 'steady') {
 }
 
 
-getCCEWMAUncond <- function(ARL0, interval, lambda, m, nu, n, ubc, tmin, tmax, state = 'steady', tol = 1e-2) {
+getCCEWMAUncond <- function(ARL0, interval, lambda, m, nu, n, ubc, t.interval = c(20, 50), state = 'steady', tol = 1e-2) {
   
   rootFinding <- function(L, ARL0, lambda, m, nu, n, ubc, tmin, tmax, state = 'steady') {
     
@@ -28,6 +28,9 @@ getCCEWMAUncond <- function(ARL0, interval, lambda, m, nu, n, ubc, tmin, tmax, s
     
   }
   
+  tmin <- t.interval[1]
+  tmax <- t.interval[2]
+ 
   uniroot(rootFinding, interval = interval, ARL0 = ARL0, lambda = lambda, m = m, nu = nu, n = n, ubc = ubc, 
             tmin = tmin, tmax = tmax, state = state, tol = tol)$root
   
@@ -54,7 +57,7 @@ pCARLEWMA <- function(q, L, lambda, m, nu, n, ubc, tmin, tmax, state = 'steady')
 
 
 
-getCCEWMACond <- function(p0, interval = c(1, 4), ARL0, eps, lambda, m, nu, n, ubc, tmin, tmax, state = 'steady', tol = 1e-4) {
+getCCEWMACond <- function(p0, interval = c(1, 4), ARL0, eps, lambda, m, nu, n, ubc, t.interval = c(20, 50), state = 'steady', tol = 1e-4) {
   
   rootFinding <- function(L, p0, ARLb, lambda, m, nu, n, ubc, tmin, tmax, state) {
     
@@ -63,7 +66,10 @@ getCCEWMACond <- function(p0, interval = c(1, 4), ARL0, eps, lambda, m, nu, n, u
     p0 - p
     
   }
-  
+ 
+  tmin <- t.interval[1]
+  tmax <- t.interval[2]
+ 
   ARLb <- (1 - eps) * ARL0
   
   uniroot(rootFinding, interval = interval, p0 = p0, ARLb = ARLb, lambda = lambda, m = m, nu = nu, n = n, ubc = ubc, 
