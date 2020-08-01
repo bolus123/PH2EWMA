@@ -12,3 +12,4 @@ Imports: Rcpp (>= 1.0.5)
 Depends: pracma, RcppArmadillo
 LinkingTo: Rcpp, RcppArmadillo
 Encoding: UTF-8
+License: GPL-3 | file LICENSE

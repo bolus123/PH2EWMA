@@ -52,6 +52,5 @@ The sum of \code{x} and \code{y}
 Add together two numbers
 }
 \examples{
-getCCEWMACond(p0 = 0.05, interval = c(1, 5), ARL0 = 370, eps = 0, lambda = 0.1, m = 50, nu = 49, 
-	n = 5, ubc = 1, tmin = 20, tmax = 50, state = 'steady', tol = 1e-2)
+getCCEWMACond(p0 = 0.05, interval = c(1, 5), ARL0 = 370, eps = 0, lambda = 0.1, m = 50)
 }

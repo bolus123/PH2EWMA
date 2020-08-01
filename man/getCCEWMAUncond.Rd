@@ -45,6 +45,5 @@ The sum of \code{x} and \code{y}
 Add together two numbers
 }
 \examples{
-getCCEWMAUncond(ARL0 = 370, interval = c(1, 5), lambda = 0.1, m = 50, nu = 49, 
-	n = 5, ubc = 1, tmin = 20, tmax = 50, state = 'steady', tol = 1e-2)
+getCCEWMAUncond(ARL0 = 370, interval = c(1, 5), lambda = 0.1, m = 50)
 }
