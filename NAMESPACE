@@ -1,0 +1,8 @@
+useDynLib(PH2EWMA, .registration = TRUE)
+
+export(getCCEWMACond)
+export(getCCEWMAUncond)
+import(Rcpp)
+import(RcppArmadillo)
+importFrom(pracma,integral2)
+importFrom("stats", "uniroot")
