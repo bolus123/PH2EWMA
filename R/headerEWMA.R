@@ -16,7 +16,7 @@ getARL <- function(L, lambda, m, nu, n, ubc, tmin, tmax, state = 'steady') {
 }
 
 
-getCC.CUC <- function(ARL0, interval = c(1, 4), lambda, m, nu = m - 1, n = 5, ubc = 1, t.interval = c(20, 50), state = 'steady', tol = 1e-2) {
+getCC.CUC <- function(ARL0, interval = c(1, 4), lambda, m, nu = m - 1, n = 5, ubCons = 1, t.interval = c(20, 50), state = 'steady', tol = 1e-2) {
   
   rootFinding <- function(L, ARL0, lambda, m, nu, n, ubc, tmin, tmax, state = 'steady') {
     
@@ -30,6 +30,8 @@ getCC.CUC <- function(ARL0, interval = c(1, 4), lambda, m, nu = m - 1, n = 5, ub
   
   tmin <- t.interval[1]
   tmax <- t.interval[2]
+ 
+  ubc <- ubCons
  
   uniroot(rootFinding, interval = interval, ARL0 = ARL0, lambda = lambda, m = m, nu = nu, n = n, ubc = ubc, 
             tmin = tmin, tmax = tmax, state = state, tol = tol)$root
@@ -57,7 +59,7 @@ pCARLEWMA <- function(q, L, lambda, m, nu, n, ubc, tmin, tmax, state = 'steady')
 
 
 
-getCC.EPC <- function(p0, interval = c(1, 4), ARL0, epstilda, lambda, m, nu = m - 1, n = 5, ubc = 1, t.interval = c(20, 50), state = 'steady', tol = 1e-2) {
+getCC.EPC <- function(p0, interval = c(1, 4), ARL0, epstilda, lambda, m, nu = m - 1, n = 5, ubCons = 1, t.interval = c(20, 50), state = 'steady', tol = 1e-2) {
   
   rootFinding <- function(L, p0, ARLb, lambda, m, nu, n, ubc, tmin, tmax, state) {
     
@@ -69,6 +71,8 @@ getCC.EPC <- function(p0, interval = c(1, 4), ARL0, epstilda, lambda, m, nu = m 
  
   tmin <- t.interval[1]
   tmax <- t.interval[2]
+ 
+  ubc <- ubCons
  
   eps <- epstilda
  
@@ -105,7 +109,7 @@ getCC <- function(
 	  m = m, 
 	  nu = nu, 
 	  n = n, 
-	  ubc = ubc, 
+	  ubCons = ubCons, 
 	  t.interval = t.interval, 
 	  state = state, 
 	  tol = tol
@@ -122,7 +126,7 @@ getCC <- function(
 	  m = m, 
 	  nu = nu, 
 	  n = n, 
-	  ubc = ubc, 
+	  ubCons = ubCons, 
 	  t.interval = t.interval, 
 	  state = state, 
 	  tol = tol
@@ -145,8 +149,7 @@ PH2EWMA <- function(
   lambda = 0.1,
   EPC.p0 = 0.05,
   EPC.epstilda = 0,
-  cc.option = c('EPC'),
-  ubCons = 1, 
+  cc.option = c('CUC', 'EPC'),
   t.interval = c(20, 50),
   state = 'steady',
   tol = 1e-2
@@ -194,7 +197,7 @@ PH2EWMA <- function(
 					m = m, 
 					nu = nu, 
 					n = n, 
-					ubc = ubc, 
+					ubCons = ubCons, 
 					t.interval = t.interval, 
 					state = state, 
 					tol = tol
@@ -216,7 +219,7 @@ PH2EWMA <- function(
 					m = m, 
 					nu = nu, 
 					n = n, 
-					ubc = ubc, 
+					ubCons = ubCons, 
 					t.interval = t.interval, 
 					state = state, 
 					tol = tol
