@@ -1,7 +1,7 @@
 useDynLib(PH2EWMA, .registration = TRUE)
 
-export(getCCEWMACond)
-export(getCCEWMAUncond)
+export(getCC.CUC)
+export(getCC.EPC)
 import(Rcpp)
 import(RcppArmadillo)
 importFrom(pracma,integral2)
