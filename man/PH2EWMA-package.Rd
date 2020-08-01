@@ -1,6 +1,5 @@
 \name{PH2EWMA-package}
 \alias{PH2EWMA-package}
-\alias{PH2EWMA}
 \docType{package}
 \title{
   A short title line describing what the package does

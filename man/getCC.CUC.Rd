@@ -9,7 +9,7 @@ getCC.CUC(
   m,
   nu = m - 1,
   n = 5,
-  ubc = 1,
+  ubCons = 1,
   t.interval = c(20, 50),
   state = "steady",
   tol = 1e-2
@@ -28,7 +28,7 @@ getCC.CUC(
 
 \item{n}{sample size}
 
-\item{ubc}{unbiasing constant}
+\item{ubCons}{unbiasing constant}
 	
 \item{t.interval}{searching range of number of states in Markov chain.  The default setting is between 20 and 50.}
 

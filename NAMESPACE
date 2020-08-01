@@ -2,7 +2,13 @@ useDynLib(PH2EWMA, .registration = TRUE)
 
 export(getCC.CUC)
 export(getCC.EPC)
+export(getCC)
+export(PH2EWMA)
+export('c4.f')
+
 import(Rcpp)
 import(RcppArmadillo)
 importFrom(pracma,integral2)
 importFrom("stats", "uniroot")
+importFrom("graphics", "abline", "points", "text")
+importFrom("stats", "var")

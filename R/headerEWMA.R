@@ -152,7 +152,7 @@ PH2EWMA <- function(
   cc.option = c('CUC', 'EPC'),
   t.interval = c(20, 50),
   state = 'steady',
-  tol = 1e-2
+  tol = 1e-2,
   ubCons.option = TRUE,
   plot.option = TRUE) 
 {
