@@ -11,11 +11,10 @@ getCCEWMACond(
   eps,
   lambda,
   m,
-  nu,
-  n,
-  ubc,
-  tmin,
-  tmax,
+  nu = m - 1,
+  n = 5,
+  ubc = 1,
+  t.interval = c(20, 50),
   state = "steady",
   tol = 1e-04
 )
@@ -40,9 +39,7 @@ getCCEWMACond(
 
 \item{ubc}{A number}
 
-\item{tmin}{A number}
-
-\item{tmax}{A number}
+\item{t.interval}{A number}
 
 \item{state}{A number}
 
