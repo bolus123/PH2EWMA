@@ -157,6 +157,10 @@ PH2EWMA <- function(
   plot.option = TRUE) 
 {
 
+  ewma.filter <- function(x, lambda, init) {
+	c(filter(x * lambda, 1 - lambda, "recursive", init = init))
+  }
+
   m <- dim(X1)[1]
   nu <- m - 1
   n <- dim(X1)[2]
@@ -178,7 +182,8 @@ PH2EWMA <- function(
   X1Var <- var(X1bar)
 
   X2bar <- rowMeans(X2)
-
+  Z <- ewma.filter(X2bar, lambda, X1barbar)
+  
   if (is.null(cc)) {
 
     cc <- rep(NA, 2)
@@ -246,14 +251,14 @@ PH2EWMA <- function(
 
   cc.num <- length(cc)
 
-  lower.limits <- X1barbar - cc * sqrt(X1Var) / ubCons
-  upper.limits <- X1barbar + cc * sqrt(X1Var) / ubCons
+  lower.limits <- X1barbar - cc * sqrt(X1Var * lambda / (2 - lambda)) / ubCons
+  upper.limits <- X1barbar + cc * sqrt(X1Var * lambda / (2 - lambda)) / ubCons
 
   if (plot.option == TRUE) {
 
-    plot(c(1, m2), c(min(X2bar, lower.limits), max(X2bar, upper.limits)), type = 'n',
+    plot(c(1, m2), c(min(Z, lower.limits), max(Z, upper.limits)), type = 'n',
           xlab = 'Subgroup', ylab = 'Sample Mean')
-    points(1:m2, X2bar, type = 'o', lty = 1)
+    points(1:m2, Z, type = 'o', lty = 1)
 
     for (i in 1:cc.num) {
 
@@ -273,7 +278,7 @@ PH2EWMA <- function(
             PH2.cc = cc,
             LCL = lower.limits,
             UCL = upper.limits,
-            CS = X2bar)
+            CS = Z)
 
   return(out)
 
