@@ -1,5 +1,5 @@
 # Overview
-The purpose of PH2EWMA is to build a Phase II EWMA control chart with vairance components model in R.
+The purpose of PH2EWMA is to build a Phase II EWMA control chart with one-way random effects model in R.
 
 # Installation
 
